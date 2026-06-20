@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Упаковка бренда за 7 дней — GROK</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg-alt: #FAFAFA;
+    --bg-dark: #0A0A0A;
+    --bg-dark-card: #141414;
+    --text: #0A0A0A;
+    --text-secondary: #4A4A4A;
+    --text-muted: #AAAAAA;
+    --gold: #C9A96E;
+    --gold-dark: #B08D55;
+    --border-light: #E5E5E5;
+    --border-dark: #333333;
+    --max-width: 1200px;
+    --font-serif: 'Georgia', 'Times New Roman', serif;
+    --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  h1, h2, h3 { font-family: var(--font-serif); line-height: 1.2; font-weight: 700; }
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+  @media (min-width: 768px) { .container { padding: 0 48px; } }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none; font-family: var(--font-sans); font-weight: 600; font-size: 16px;
+    border: none; cursor: pointer; transition: all .2s ease; border-radius: 4px;
+    padding: 18px 40px; letter-spacing: 0.2px;
+  }
+  .btn-primary { background: var(--gold); color: var(--text); }
+  .btn-primary:hover { background: var(--gold-dark); }
+  .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--text); }
+  .btn-secondary:hover { background: var(--text); color: var(--bg); }
+  .btn-dark { background: var(--gold); color: var(--bg-dark); }
+  .btn-dark:hover { background: var(--gold-dark); }
+  .btn-ghost { background: transparent; color: var(--gold); text-decoration: underline; padding: 8px 0; }
+
+  .header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-light);
+  }
+  .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo { font-family: var(--font-serif); font-size: 24px; color: var(--gold); font-weight: 700; text-decoration: none; }
+  .nav { display: none; gap: 32px; align-items: center; }
+  @media (min-width: 768px) { .nav { display: flex; } }
+  .nav a { text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500; }
+  .nav a:hover { color: var(--gold); }
+  .nav .btn { padding: 12px 24px; font-size: 14px; }
+
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; position: relative;
+    border: 1px solid var(--gold); margin: 12px; border-radius: 2px;
+  }
+  .hero::before, .hero::after {
+    content: ''; position: absolute; width: 60px; height: 60px; border: 1px solid var(--gold);
+  }
+  .hero::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .hero::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+  @media (min-width: 992px) { .hero-grid { grid-template-columns: 55% 45%; } }
+  .hero h1 { font-size: 42px; }
+  @media (min-width: 768px) { .hero h1 { font-size: 64px; } }
+  .hero p { font-size: 18px; color: var(--text-secondary); margin-top: 24px; max-width: 540px; }
+  .hero-actions { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px; }
+  .hero-img { border-radius: 8px; overflow: hidden; }
+  .hero-img img { width: 100%; height: 100%; object-fit: contain; max-height: 80vh; display: block; }
+
+  .section { padding: 100px 0; }
+  @media (min-width: 768px) { .section { padding: 120px 0; } }
+  .section-header { text-align: center; max-width: 800px; margin: 0 auto 64px; }
+  .section-header h2 { font-size: 36px; }
+  @media (min-width: 768px) { .section-header h2 { font-size: 48px; } }
+  .section-header p { font-size: 18px; color: var(--text-secondary); margin-top: 16px; }
+  .bg-alt { background: var(--bg-alt); }
+  .bg-dark { background: var(--bg-dark); color: #fff; }
+  .bg-dark .section-header h2 { color: #fff; }
+  .bg-dark .section-header p { color: var(--gold); }
+
+  .cards-grid { display: grid; gap: 24px; }
+  @media (min-width: 768px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 992px) { .cards-grid { grid-template-columns: repeat(4, 1fr); } }
+  .card { text-align: center; padding: 32px 24px; }
+  .card-icon {
+    width: 56px; height: 56px; margin: 0 auto 20px; border: 1px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 22px; font-weight: 700;
+  }
+  .card h3 { font-size: 20px; margin-bottom: 12px; }
+  .card p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+  .section-cta { text-align: center; margin-top: 48px; }
+
+  .solution-grid { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 992px) { .solution-grid { grid-template-columns: 1fr 1fr; } }
+  .solution-list { display: flex; flex-direction: column; gap: 24px; margin-top: 48px; }
+  .solution-item { display: flex; gap: 20px; align-items: flex-start; }
+  .solution-num {
+    flex-shrink: 0; width: 40px; height: 40px; border: 1px solid var(--gold); color: var(--gold);
+    display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px;
+  }
+  .solution-item h4 { font-size: 18px; margin-bottom: 6px; font-family: var(--font-sans); font-weight: 700; }
+  .solution-item p { font-size: 15px; color: var(--text-secondary); }
+  .solution-img { min-height: 360px; border-radius: 8px; overflow: hidden; }
+  .solution-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .contents-grid { display: grid; gap: 24px; }
+  @media (min-width: 768px) { .contents-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 992px) { .contents-grid { grid-template-columns: repeat(4, 1fr); } }
+  .content-card {
+    background: #fff; border: 1px solid var(--border-light); padding: 32px; border-radius: 4px;
+    transition: border-color .2s; position: relative; overflow: hidden;
+  }
+  .content-card:hover { border-color: var(--gold); }
+  .content-card .day-num { position: absolute; top: 12px; right: 16px; font-size: 72px; font-family: var(--font-serif); color: var(--gold); opacity: .12; line-height: 1; }
+  .content-card h3 { font-size: 18px; margin-bottom: 12px; position: relative; z-index: 1; }
+  .content-card p { font-size: 14px; color: var(--text-secondary); position: relative; z-index: 1; }
+
+  .characters-grid { display: grid; gap: 40px; justify-items: center; }
+  @media (min-width: 768px) { .characters-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 992px) { .characters-grid { grid-template-columns: repeat(4, 1fr); } }
+  .char-card { text-align: center; max-width: 280px; }
+  .char-img {
+    width: 160px; height: 160px; border-radius: 50%; margin: 0 auto 20px; border: 2px solid var(--gold);
+    background: var(--bg-alt); display: flex; align-items: center; justify-content: center;
+    font-size: 48px; color: var(--gold); font-family: var(--font-serif); overflow: hidden;
+  }
+  .char-role { text-transform: uppercase; font-size: 12px; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 8px; font-weight: 600; }
+  .char-card h3 { font-size: 22px; margin-bottom: 10px; }
+  .char-card p { font-size: 15px; color: var(--text-secondary); }
+  .char-quote {
+    max-width: 700px; margin: 56px auto 0; text-align: center; font-family: var(--font-serif); font-style: italic;
+    font-size: 20px; color: var(--text-secondary); padding: 32px; border: 1px solid var(--gold); border-radius: 4px;
+  }
+
+  .bonus-grid { display: grid; gap: 24px; }
+  @media (min-width: 768px) { .bonus-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 992px) { .bonus-grid { grid-template-columns: repeat(4, 1fr); } }
+  .bonus-card { background: var(--bg-dark-card); border: 1px solid var(--border-dark); padding: 40px 32px; border-radius: 4px; }
+  .bonus-icon { width: 48px; height: 48px; color: var(--gold); border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 20px; }
+  .bonus-card h3 { font-size: 18px; color: #fff; margin-bottom: 10px; }
+  .bonus-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+
+  .subscribe-form { max-width: 520px; margin: 56px auto 0; text-align: center; }
+  .subscribe-form h3 { font-size: 24px; color: #fff; margin-bottom: 8px; }
+  .subscribe-form > p { font-size: 15px; color: var(--text-muted); margin-bottom: 24px; }
+  .form-row { display: flex; gap: 12px; }
+  @media (max-width: 480px) { .form-row { flex-direction: column; } }
+  .form-row input {
+    flex: 1; height: 56px; background: var(--bg-dark-card); border: 1px solid var(--border-dark);
+    color: #fff; padding: 0 16px; font-size: 16px; border-radius: 4px; outline: none;
+  }
+  .form-row input::placeholder { color: #666; }
+  .form-row .btn { padding: 16px 28px; white-space: nowrap; }
+  .form-note { font-size: 12px; color: #666; margin-top: 12px; }
+
+  .soon-box { max-width: 640px; margin: 0 auto; text-align: center; padding: 40px 32px; border: 1px solid var(--gold); border-radius: 4px; }
+  .soon-box p { font-family: var(--font-serif); font-style: italic; font-size: 20px; color: var(--text-secondary); }
+
+  .final-cta { text-align: center; max-width: 800px; margin: 0 auto; border: 1px solid var(--gold); padding: 80px 32px; border-radius: 2px; position: relative; }
+  .final-cta h2 { font-size: 40px; }
+  @media (min-width: 768px) { .final-cta h2 { font-size: 56px; } }
+  .final-cta > p { font-size: 18px; color: var(--text-secondary); margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .final-cta .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 40px; }
+
+  .faq-list { max-width: 800px; margin: 0 auto; }
+  details { border-bottom: 1px solid var(--border-light); }
+  summary {
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 0; font-size: 18px; font-weight: 700; cursor: pointer; user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary .arrow { width: 24px; height: 24px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); transition: transform .2s; font-size: 14px; }
+  details[open] summary .arrow { transform: rotate(180deg); }
+  .faq-answer { padding: 0 0 24px; font-size: 16px; color: var(--text-secondary); line-height: 1.6; max-width: 720px; }
+
+  .footer { background: var(--bg-dark); color: #fff; padding: 64px 0 32px; }
+  .footer-grid { display: grid; gap: 48px; }
+  @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } }
+  .footer-brand .logo { font-size: 28px; }
+  .footer-brand p { font-size: 14px; color: var(--text-muted); margin-top: 16px; max-width: 300px; }
+  .footer h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 20px; font-weight: 600; }
+  .footer a { display: block; color: #fff; text-decoration: none; font-size: 16px; margin-bottom: 12px; }
+  .footer a:hover { color: var(--gold); }
+  .footer .gold-link { color: var(--gold); }
+  .footer-bottom { border-top: 1px solid var(--border-dark); margin-top: 48px; padding-top: 24px; text-align: center; font-size: 14px; color: #666; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a href="#" class="logo">GROK</a>
+    <nav class="nav">
+      <a href="https://t.me/AIbyInna" target="_blank" rel="noopener">О гайде</a>
+      <a href="https://t.me/AIbyInna" target="_blank" rel="noopener">Персонажи</a>
+      <a href="https://t.me/AIbyInna" target="_blank" rel="noopener">Бонусы</a>
+      <a href="https://t.me/AIbyInna" target="_blank" rel="noopener">FAQ</a>
+      <a href="https://t.me/AIbyInna" class="btn btn-primary" target="_blank" rel="noopener">Купить гайд</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <h1>Упаковка бренда за 7 дней</h1>
+        <p>Система GROK для рестораторов, которые хотят выделиться и повысить доход.</p>
+        <div class="hero-actions">
+          <a href="https://t.me/AIbyInna" class="btn btn-primary" target="_blank" rel="noopener">Купить гайд за $25</a>
+          <a href="https://t.me/AIbyInna" class="btn btn-secondary" target="_blank" rel="noopener">Узнать подробнее</a>
+          <p style="margin-top:12px; font-size:14px; color:var(--text-secondary);">Или напишите <strong>«ГАЙД»</strong> в директ Telegram — оплатим там</p>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="data:image/png;base64.
 
