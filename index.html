@@ -1,1 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GROK — Упаковка бренда за 7 дней</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .gold {
+            color: #d4af37;
+        }
 
+        /* ===== HEADER ===== */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .btn {
+            display: inline-block;
+            background: #d4af37;
+            color: #0a0a0a;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            border: 2px solid #d4af37;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: transparent;
+            color: #d4af37;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 0;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 1 1 50%;
+        }
+        .hero-text h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .hero-text p {
+            font-size: 20px;
+            color: #aaa;
+            max-width: 500px;
+            margin-bottom: 32px;
+        }
+        .hero-image {
+            flex: 1 1 40%;
+            background: #1a1a1a;
+            border-radius: 24px;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px solid #2a2a2a;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .hero-image .placeholder {
+            font-size: 18px;
+            color: #555;
+        }
+        .hero-image .emoji-big {
+            font-size: 72px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 60px 0;
+            border-top: 1px solid #1a1a1a;
+        }
+        section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        section p {
+            font-size: 18px;
+            color: #bbb;
+            max-width: 700px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 24px;
+        }
+        .grid-2 .card {
+            background: #111;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #222;
+        }
+        .grid-2 .card h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+        .grid-2 .card p {
+            font-size: 16px;
+            color: #888;
+        }
+
+        /* ===== CTA ===== */
+        .cta-block {
+            background: #d4af37;
+            color: #0a0a0a;
+            border-radius: 24px;
+            padding: 48px 32px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .cta-block h2 {
+            color: #0a0a0a;
+            margin-bottom: 12px;
+        }
+        .cta-block p {
+            color: #1a1a1a;
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+        .btn-dark {
+            display: inline-block;
+            background: #0a0a0a;
+            color: #d4af37;
+            padding: 12px 40px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 18px;
+            border: 2px solid #0a0a0a;
+            transition: all 0.3s;
+        }
+        .btn-dark:hover {
+            background: transparent;
+            color: #0a0a0a;
+            border-color: #0a0a0a;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 32px 0;
+            border-top: 1px solid #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 14px;
+            color: #555;
+        }
+        footer a {
+            color: #d4af37;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                flex-direction: column;
+            }
+            .hero-image {
+                width: 100%;
+            }
+            header {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <div class="logo">GROK<span class="gold">.</span></div>
+            <a href="https://t.me/AIbyInna" class="btn">Купить гайд</a>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Упаковка бренда<br><span class="gold">за 7 дней</span></h1>
+                <p>Система GROK для рестораторов, владельцев кафе и маркетологов. Индекс честности, конвейер контента, персонажи и промты — всё в одном гайде.</p>
+                <a href="https://t.me/AIbyInna" class="btn">Купить гайд за $25</a>
+            </div>
+            <div class="hero-image">
+                <div class="emoji-big">🐕</div>
+                <div class="placeholder">Лика и Шеф Барбос — фото здесь</div>
+            </div>
+        </section>
+
+        <!-- О ГАЙДЕ -->
+        <section>
+            <h2>Что внутри гайда</h2>
+            <p>7 глав, которые превратят ваш бренд в систему:</p>
+            <div class="grid-2">
+                <div class="card"><h3>📊 Индекс честности</h3><p>Калькулятор себестоимости и эффект пустоты.</p></div>
+                <div class="card"><h3>🧑‍🍳 Персонажи</h3><p>Лика, Барбос, Натан, котята — ваша команда.</p></div>
+                <div class="card"><h3>🎬 Конвейер GROK</h3><p>6 шагов от сценария до публикации за 40 минут.</p></div>
+                <div class="card"><h3>📦 Бонусы</h3><p>50+ промтов, конструктор, чек-лист на 7 дней.</p></div>
+            </div>
+        </section>
+
+        <!-- ПЕРСОНАЖИ -->
+        <section>
+            <h2>Ваши проводники в мир GROK</h2>
+            <div class="grid-2">
+                <div class="card"><h3>🖤 Лика</h3><p>Эстетика и элегантность. Голос, раскрывающий химию кулинарии и технические секреты.</p></div>
+                <div class="card"><h3>🐕 Шеф Барбос</h3><p>Хранитель шляхетских традиций. Мастер самоиронии, возрождающий забытые шедевры.</p></div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-block">
+            <h2>Готов упаковать бренд?</h2>
+            <p>Напиши «ГАЙД» в Telegram — и получи доступ к системе GROK.</p>
+            <a href="https://t.me/AIbyInna" class="btn-dark">Написать в Telegram</a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <span>© 2026 GROK — Упаковка бренда за 7 дней</span>
+            <span><a href="https://t.me/AIbyInna">Telegram</a> · <a href="mailto:beinpt1101@gmail.com">email</a></span>
+        </footer>
+
+    </div>
+</body>
+</html>
